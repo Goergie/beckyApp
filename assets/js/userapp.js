@@ -13,7 +13,19 @@
         this.name = "";
         this.email = "";
         this.password = "";
+        this.passwordConfirm = "";
     };
+
+    this.confirm = function(valid){
+        this.valid = valid;
+        if (this.password === this.passwordConfirm) {
+          return this.valid && true;
+        }
+        else {
+          return this.valid && false;
+        }
+    };
+
   });
 
 })();
