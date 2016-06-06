@@ -2,15 +2,17 @@
   var app = angular.module("userRegistration", []);
 
   app.controller("UserController", function(){
-    this.firstname = "";
-    this.lastname = "";
-    this.sex = "";
+    this.name = "";
+    this.email = "";
+    this.password = "";
 
     this.createUser = function(){
-        console.log(this.firstname);
-        this.firstname = "";
-        this.lastname = "";
-        this.sex = "";
+        console.log(this.name);
+        console.log(this.email);
+        console.log(this.password);
+        this.name = "";
+        this.email = "";
+        this.password = "";
     };
   });
 

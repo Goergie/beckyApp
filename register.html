@@ -5,34 +5,37 @@
     <link rel="stylesheet" href="assets/css/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script type="text/javascript" src="assets/js/userapp.js"></script>
+    <title>MyDreamList | Register </title>
   </head>
 
   <body>
-    <header>
-      <h4 class="text-center">Sign Up Form</h4>
-    </header>
     <div class="container main">
+      <div>
+        <h5 class="text-center"> Sign Up </h5>
+      </div>
       <form name="registeration" ng-controller="UserController as userCtrl" ng-submit="userCtrl.createUser()" >
         <div class="form-group">
-          <label for="firstname">Firstname</label>
-          <input name="firstname" ng-model="userCtrl.firstname"  class="form-control " id="firstname">
+          <label for="name">Name</label>
+          <input name="name" ng-model="userCtrl.name"  class="form-control " id="name">
         </div>
 
         <div class="form-group">
-          <label for="lastname">Lastname</label>
-          <input name="lastname" ng-model="userCtrl.lastname"  class="form-control" id="lastname" >
+          <label for="email">Email</label>
+          <input name="email" ng-model="userCtrl.email"  class="form-control" id="email" >
         </div>
 
         <div class="form-group">
-          <label for="sex">Sex</label>
-          <select ng-model="userCtrl.sex" class="form-control" id="sex">
-            <option value="" disabled="true">Sex</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-          </select>
+          <label for="password">Password</label>
+          <input type="password" name="password" ng-model="userCtrl.password"  class="form-control" id="password" >
         </div>
+
+        <div class="form-group">
+          <label for="passwordConfirm">Confirm Password</label>
+          <input type="password" name="passwordConfirm" ng-model="userCtrl.passwordConfirm"  class="form-control" id="passwordConfirm" >
+        </div>
+
          <div class="form-group">
-          <input type="submit" value="submit" class="form-control">
+          <input type="submit" value="submit" class="form-control btn-primary submit-button">
         </div>
       </form>
     </div>
