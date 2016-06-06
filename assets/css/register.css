@@ -1,0 +1,22 @@
+.main {
+  background-color: white;
+  opacity: 0.76;
+  border: 1px solid #E3E3E3;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 10%;
+  width: 35%;
+}
+
+body{
+  background-image: url("../images/bg3.jpg");
+  background-size: 100% auto;
+}
+
+.input-field {
+  margin-top: 2em;
+}
+
+select {
+  width: 30% !important;
+}
