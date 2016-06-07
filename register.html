@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script type="text/javascript" src="assets/js/userapp.js"></script>
+    <script type="text/javascript" src="assets/js/user.js"></script>
     <title>MyDreamList | Register </title>
   </head>
 
-  <body>
+  <body ng-app="main">
     <div class="container main">
       <div>
         <h5 class="text-center"> Sign Up </h5>
@@ -16,22 +16,22 @@
       <form name="registeration" ng-controller="UserController as userCtrl" ng-submit="userCtrl.confirm(registeration.$valid) && userCtrl.createUser()" novalidate >
         <div class="form-group">
           <label for="name">Name</label>
-          <input name="name" ng-model="userCtrl.name"  class="form-control " id="name" required>
+          <input name="name" ng-model="userCtrl.user.name"  class="form-control " id="name" required>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" ng-model="userCtrl.email"  class="form-control" id="email" required>
+          <input type="email" ng-model="userCtrl.user.email"  class="form-control" id="email" required>
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" name="password" ng-model="userCtrl.password"  class="form-control" id="password" required>
+          <input type="password" name="password" ng-model="userCtrl.user.password"  class="form-control" id="password" required>
         </div>
 
         <div class="form-group">
           <label for="passwordConfirm">Confirm Password</label>
-          <input type="password" name="passwordConfirm" ng-model="userCtrl.passwordConfirm"  class="form-control" id="passwordConfirm" required>
+          <input type="password" name="passwordConfirm" ng-model="userCtrl.user.passwordConfirm"  class="form-control" id="passwordConfirm" required>
         </div>
 
          <div class="form-group">
