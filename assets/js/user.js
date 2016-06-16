@@ -1,26 +1,23 @@
 (function() {
   var app = angular.module("userRegistration", []);
 
-  app.controller("UserController", ["$http", function($http){
-    this.user = {};
+  app.controller("UserController", ["$http", "$scope", function($http, $scope){
+    $scope.user = {};
 
-    this.createUser = function(){
-
-        console.log(this.user);
-        this.user = {};
-        $http.get("https://dreamlist.herokuapp.com/api/v1/user/new").success(function(data){
+    $scope.createUser = function(){
+        user = {name: "aa", email: "www.dd.com", password: "2"};
+        $http.post("https://dreamlist.herokuapp.com/api/v1/user/new", user).success(function(data){
           console.log(data);
-
         });
     };
 
-    this.confirm = function(valid){
-        this.valid = valid;
-        if (this.user.password === this.user.passwordConfirm) {
-          return this.valid && true;
+    $scope.confirm = function(valid){
+        $scope.valid = valid;
+        if ($scope.user.password === $scope.user.passwordConfirm) {
+          return $scope.valid && true;
         }
         else {
-          return this.valid && false;
+          return $scope.valid && false;
         }
     };
 

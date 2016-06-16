@@ -13,25 +13,25 @@
       <div>
         <h5 class="text-center"> Sign Up </h5>
       </div>
-      <form name="registeration" ng-controller="UserController as userCtrl" ng-submit="userCtrl.confirm(registeration.$valid) && userCtrl.createUser()" novalidate >
+      <form name="registeration" ng-controller="UserController" ng-submit="confirm(registeration.$valid) && createUser()" novalidate >
         <div class="form-group">
           <label for="name">Name</label>
-          <input name="name" ng-model="userCtrl.user.name"  class="form-control " id="name" required>
+          <input name="name" ng-model="user.name"  class="form-control " id="name" required>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" ng-model="userCtrl.user.email"  class="form-control" id="email" required>
+          <input type="email" ng-model="user.email"  class="form-control" id="email" required>
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" name="password" ng-model="userCtrl.user.password"  class="form-control" id="password" required>
+          <input type="password" name="password" ng-model="user.password"  class="form-control" id="password" required>
         </div>
 
         <div class="form-group">
           <label for="passwordConfirm">Confirm Password</label>
-          <input type="password" name="passwordConfirm" ng-model="userCtrl.user.passwordConfirm"  class="form-control" id="passwordConfirm" required>
+          <input type="password" name="passwordConfirm" ng-model="user.passwordConfirm"  class="form-control" id="passwordConfirm" required>
         </div>
 
          <div class="form-group">
