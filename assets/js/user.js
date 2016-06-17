@@ -5,8 +5,7 @@
     $scope.user = {};
 
     $scope.createUser = function(){
-        user = {name: "aa", email: "www.dd.com", password: "2"};
-        $http.post("https://dreamlist.herokuapp.com/api/v1/user/new", user).success(function(data){
+        $http.post("https://dreamlist.herokuapp.com/api/v1/user/new", $scope.user).success(function(data){
           console.log(data);
         });
     };
