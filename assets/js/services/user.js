@@ -6,7 +6,7 @@
     var user = this;
     user.userdetails = {};
 
-    user.createUser = function(user){
+    user.create = function(user){
       var defer = $q.defer();
       $http.post("https://dreamlist.herokuapp.com/api/v1/user/new", user)
       .success(function(response){
@@ -20,7 +20,7 @@
       return defer.promise;
     }
 
-    user.loginUser = function(user){
+    user.login = function(user){
       var defer = $q.defer();
       $http.post("https://dreamlist.herokuapp.com/api/v1/auth/login", user)
       .success(function(response){

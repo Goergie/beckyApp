@@ -4,19 +4,31 @@
   app.controller("UserController", ["$scope", "user", function($scope, user){
     $scope.init = function(){
       $scope.regUser = {};
-
+      $scope.loginUser = {};
     };
 
     $scope.createUser = function(){
-      user.createUser($scope.regUser)
+      user.create($scope.regUser)
       .then(function(response){
         console.log(response);
         //success
       }), function(err, status){
         console.log(err);
       }
-
     };
+
+    $scope.login = function(){
+      user.login($scope.loginUser)
+      .then(function(response){
+        $scope.loginUser.token = response.token;
+        console.log($scope.loginUser);
+        //success
+      }), function(err, status){
+        console.log(err);
+      }
+    };
+
+
 
     $scope.confirm = function(valid){
         $scope.valid = valid;
