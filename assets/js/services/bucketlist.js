@@ -1,16 +1,14 @@
 (function() {
 
   var app = angular.module("httpBucketlist", [])
-  app.service("bucketlist", function bucketlist($http, $q){
+  app.service("bucketlist", function bucketlist($http, $q, $window){
 
     var bucketlist = this;
 
-    bucketlist.all = function(token){
+    bucketlist.all = function(){
       var defer = $q.defer();
-      $http.get(
-        "https://dreamlist.herokuapp.com/api/v1/bucketlists", {
-          headers: "Authorization": 'token="1111"'
-        }
+      console.log($window.sessionStorage.token);
+      $http.get("https://dreamlist.herokuapp.com/api/v1/bucketlists", { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
         .success(function(response){
         defer.resolve(response);
       })

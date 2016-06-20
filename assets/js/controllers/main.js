@@ -36,7 +36,16 @@ $routeProvider
   })
   .otherwise({ redirectTo: "/404" });
 
-});
+})
+
+// dreamListApp.run(['$rootScope', '$injector',"$window", function($rootScope,$injector, $window) {
+//     $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
+//         if (!$window.sessionStorage.token) headersGetter()['Authorization'] = "token "+ "ll";
+//         if (data) {
+//             return angular.toJson(data);
+//         }
+//     };
+// }]);
 
 // dreamListApp.run( function($rootScope, $location, $window) {
 //   // register listener to watch route changes
