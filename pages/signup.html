@@ -1,0 +1,32 @@
+<div class=" container main">
+<div>
+  <h5 class="text-center"> Sign Up </h5>
+</div>
+<form name="registeration" ng-submit="confirm(registeration.$valid) && createUser()" novalidate >
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input name="name" ng-model="regUser.name"  class="form-control " id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" ng-model="regUser.email"  class="form-control" id="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" ng-model="regUser.password"  class="form-control" id="password" required>
+  </div>
+
+  <div class="form-group">
+    <label for="passwordConfirm">Confirm Password</label>
+    <input type="password" name="passwordConfirm" ng-model="regUser.passwordConfirm"  class="form-control" id="passwordConfirm" required>
+  </div>
+
+   <div class="form-group">
+    <input type="submit" value="submit" class="form-control btn-primary submit-button">
+  </div>
+  <div> Already registered? <a href="#login">Login here</a></div>
+</form>
+</div>
+

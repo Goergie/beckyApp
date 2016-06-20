@@ -1,10 +1,8 @@
-(function() {
-  var app = angular.module("userApp", ["httpUser"]);
-
-  app.controller("UserController", ["$scope", "user", function($scope, user){
+dreamListApp.controller("UserController", ["$scope", "user", "$window", "$location", function($scope, user, $window, $location){
     $scope.init = function(){
       $scope.regUser = {};
       $scope.loginUser = {};
+      $scope.error = "";
     };
 
     $scope.createUser = function(){
@@ -20,15 +18,14 @@
     $scope.login = function(){
       user.login($scope.loginUser)
       .then(function(response){
-        $scope.loginUser.token = response.token;
-        console.log($scope.loginUser);
+        $window.sessionStorage.token = response.token;
+        $window.sessionStorage.loggedIn = true;
+        $location.path( "/bucketlists" );
         //success
-      }), function(err, status){
-        console.log(err);
-      }
+      }, function(err, status){
+        $scope.error = "Invalid Email/Password";
+      })
     };
-
-
 
     $scope.confirm = function(valid){
         $scope.valid = valid;
@@ -40,8 +37,11 @@
         }
     };
 
+    $scope.logout = function(){
+      $window.sessionStorage.token = "";
+      $window.sessionStorage.loggedIn= false;
+    };
+
     $scope.init();
 
-  }]);
-
-})();
+}]);
