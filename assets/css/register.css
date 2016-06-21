@@ -7,11 +7,6 @@
   margin-top: 10%;
   width: 30%;
 }
-/*
-body{
-  background-image: url("../images/bg3.jpg");
-  background-size: 100% auto;
-}*/
 
 .input-field {
   margin-top: 2em;
@@ -50,3 +45,77 @@ select {
   color: red;
   text-align: center;
 }
+
+.main-bucketlist {
+  border: 2px solid red;
+  padding: 3em;
+  min-height: 20px;
+  width: 100%;
+}
+
+.blist {
+  background-color: #fff;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: auto;
+  margin-bottom: 10px;
+  padding:  0.5em 1.5em 0.5em 0.5em;
+  width: 85%;
+}
+
+.done{
+    color: green;
+}
+
+.pending {
+  color: red;
+
+}
+
+.items {
+  color: blue;
+}
+
+.blistrow{
+  padding: 5px 10px 15px 20px;
+}
+
+.blist-name{
+  color: #5D5D5D;
+  font-size: 18px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  width: 80%;
+}
+
+.navbar{
+  background-color: black !important;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #c49500;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #c49500;
+    background-color: transparent;

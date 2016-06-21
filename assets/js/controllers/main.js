@@ -31,6 +31,11 @@ $routeProvider
     controller  : "BucketlistController"
   })
 
+  .when("/bucketlists/:id", {
+    templateUrl : "pages/bucketlist/show.html",
+    controller  : "ShowBucketlistController"
+  })
+
   .when("/404", {
     templateUrl : "pages/404.html"
   })

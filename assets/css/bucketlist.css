@@ -1,0 +1,34 @@
+.sinlge-bucket-section {
+
+  min-height:45%;
+  height: 43em;
+  padding: 90px;
+  background: #424242 url(../images/sectionbg2.jpg) no-repeat top left;
+  background-size: 100%;
+}
+
+.single-bucket-top-div {
+  padding-bottom: 40px;
+
+}
+
+.bucket-title {
+  color: #9DC880;
+}
+
+.my-progress {
+  width: 30%;
+}
+
+.bucket-details {
+  position: absolute;
+  top: 530px;
+}
+
+.date {
+  color: #929292;
+}
+
+.bucket-date {
+  padding-left: 5px;
+}

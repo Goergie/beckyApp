@@ -23,7 +23,7 @@
 
     bucketlist.get = function(id){
       var defer = $q.defer();
-      $http.get("https://dreamlist.herokuapp.com/api/v1/bucketlists/"+id)
+      $http.get("https://dreamlist.herokuapp.com/api/v1/bucketlists/"+id, { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
       .success(function(response){
         defer.resolve(response);
       })
@@ -35,8 +35,9 @@
     };
 
     bucketlist.create = function(bucketlist){
+            console.log("here ");
       var defer = $q.defer();
-      $http.post("https://dreamlist.herokuapp.com/api/v1/bucketlists", bucketlist)
+      $http.post("https://dreamlist.herokuapp.com/api/v1/bucketlists", bucketlist, { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
       .success(function(response){
         defer.resolve(response);
       })

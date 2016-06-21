@@ -1,2 +1,23 @@
-<h1> All bucketlist </h1>
-<a href="#/bucketlist/new"><button type="button" class="btn btn-primary">New Bucketlist</button></a>
+<h3>All Bucketlists</h3>
+<div class="container">
+
+  <blockquote ng-repeat="bucketlist in bucketlists">
+    <p class="quote_note">{{bucketlist.name}}</p>
+    <p id="quote_attrib" align="right">
+    <br>
+    <span style="font-size: 70%;float:right;padding-right: 15px;">
+    <a href="#/bucketlists">
+
+        Created: {{bucketlist.date_created}}
+
+    </a>
+    </span>
+    </p>
+    <div class="comment-link">
+    <a href="#/bucketlists/{{bucketlist.id}}">
+    <i class="fa fa-comments"></i>
+      View Bucketlist
+    </a>
+    </div>
+</blockquote>
+</div>

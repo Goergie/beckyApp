@@ -1,26 +1,35 @@
-dreamListApp.controller("BucketlistController", ["$scope", "bucketlist", "$window", function($scope, bucketlist){
+dreamListApp.controller("BucketlistController", ["$scope", "bucketlist", "$routeParams", function($scope, bucketlist, $routeParams){
     $scope.init = function(){
       $scope.bucketlistParams = {name: ""};
-      $scope.bucketlists = {}
+      $scope.bucketlists = [];
       $scope.getAllBucketlists();
     };
 
     $scope.createBucketlist = function(){
-      console.log($scope.bucketlistParams.name);
       bucketlist.create($scope.bucketlistParams)
       .then(function(response){
-        console.log(response);
+        console.log(response.bucketlist.name);
         //success
       }, function(err, status){
         console.log(err);
-      }
+      })
     };
 
     $scope.getAllBucketlists = function(){
-      console.log("getting them ");
       bucketlist.all()
       .then(function(response){
-        console.log("here");
+        $scope.bucketlists = response.bucketlists;
+        //success
+      }, function(err, status){
+        console.log(err);
+      })
+    };
+
+    $scope.show = function(){
+      bucketlist.get(id)
+      .then(function(response){
+        $scope.bucketlist = response.bucketlist;
+        console.log($scope.bucketlist);
         //success
       }, function(err, status){
         console.log(err);
