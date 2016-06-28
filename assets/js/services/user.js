@@ -10,8 +10,7 @@
       var defer = $q.defer();
       $http.post("https://dreamlist.herokuapp.com/api/v1/user/new", user)
       .success(function(response){
-        user.userdetails = response.user
-        defer.resolve(response.user);
+        defer.resolve(response);
       })
       .error(function(err, status){
         defer.reject(err);

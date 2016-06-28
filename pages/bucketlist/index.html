@@ -1,23 +1,26 @@
-<h3>All Bucketlists</h3>
-<div class="container">
+<section class="section-bucketlists">
+  <div class="row">
+  <div align="center" style="margin: 2em;">
+    <button type="button" class="btn bucketlist-btn" ng-click="createBucketlist()">ADD A BUCKETLIST</button>
+  </div>
 
-  <blockquote ng-repeat="bucketlist in bucketlists">
-    <p class="quote_note">{{bucketlist.name}}</p>
-    <p id="quote_attrib" align="right">
-    <br>
-    <span style="font-size: 70%;float:right;padding-right: 15px;">
-    <a href="#/bucketlists">
-
-        Created: {{bucketlist.date_created}}
-
-    </a>
-    </span>
-    </p>
-    <div class="comment-link">
-    <a href="#/bucketlists/{{bucketlist.id}}">
-    <i class="fa fa-comments"></i>
-      View Bucketlist
-    </a>
+    <div class="card" ng-repeat="bucketlist in bucketlists">
+<!--       <img class="card-img-top" data-src="assets/images/bucket1.jpg" alt="Card image cap"> -->
+      <div class="card-block">
+        <h4 class="card-title">{{$index + 1 }} {{bucketlist.name | capitalize}}</h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> {{ bucketlist.items[0].name || " " | capitalize }}</li>
+        <li class="list-group-item">{{ bucketlist.items[1].name || " " | capitalize}}</li>
+        <li class="list-group-item">{{ bucketlist.items[2].name || " " | capitalize }}</li>
+      </ul>
+      <div class="card-block card-details">
+        <p class="card-text"><small class="text-muted">Created: {{ get_date(bucketlist.date_created) | date:'medium'}}</small></p>
+        <p class="card-text"><small class="text-muted">Last Updated: {{ get_date(bucketlist.date_modified) | date:'medium'}}</small></p>
+        <a href="#/bucketlists/{{bucketlist.id}}" class="card-link card-link-a">View</a>
+        <span class="card-link delete" ng-click="delete(bucketlist.id)"><i class="fa fa-times" aria-hidden="true"></i> Delete</span>
+        <span class="card-link delete" ng-click="editBucketlist(bucketlist.id, 99)"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+      </div>
     </div>
-</blockquote>
-</div>
+  </div>
+</section>

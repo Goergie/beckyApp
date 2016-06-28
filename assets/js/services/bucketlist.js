@@ -1,14 +1,13 @@
 (function() {
 
-  var app = angular.module("httpBucketlist", [])
-  app.service("bucketlist", function bucketlist($http, $q, $window){
+  var app = angular.module("httpBucketlist", ["UserSession"])
+  app.service("bucketlist", function bucketlist($http, $q, $window, session, $rootScope){
 
     var bucketlist = this;
 
     bucketlist.all = function(){
       var defer = $q.defer();
-      console.log($window.sessionStorage.token);
-      $http.get("https://dreamlist.herokuapp.com/api/v1/bucketlists", { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
+      $http.get($rootScope.url + "bucketlists", { "headers": { Authorization: 'token ' + session.user.token }})
         .success(function(response){
         defer.resolve(response);
       })
@@ -23,7 +22,7 @@
 
     bucketlist.get = function(id){
       var defer = $q.defer();
-      $http.get("https://dreamlist.herokuapp.com/api/v1/bucketlists/"+id, { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
+      $http.get($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
       .success(function(response){
         defer.resolve(response);
       })
@@ -35,9 +34,8 @@
     };
 
     bucketlist.create = function(bucketlist){
-            console.log("here ");
       var defer = $q.defer();
-      $http.post("https://dreamlist.herokuapp.com/api/v1/bucketlists", bucketlist, { "headers": { Authorization: 'token ' + $window.sessionStorage.token }})
+      $http.post($rootScope.url + "bucketlists", bucketlist, { "headers": { Authorization: 'token ' + session.user.token }})
       .success(function(response){
         defer.resolve(response);
       })
@@ -48,9 +46,22 @@
       return defer.promise;
     }
 
+    bucketlist.addItem = function(bucketlist_id, item){
+      var defer = $q.defer();
+      $http.post($rootScope.url + "bucketlists/"+bucketlist_id+"/items", item, { "headers": { Authorization: 'token ' + session.user.token }})
+      .success(function(response){
+        defer.resolve(response);
+      })
+      .error(function(err, status){
+        defer.reject(err);
+      })
+
+      return defer.promise;
+    };
+
     bucketlist.update = function(id){
       var defer = $q.defer();
-      $http.post("https://dreamlist.herokuapp.com/api/v1/bucketlists/"+id)
+      $http.post($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
       .success(function(response){
         defer.resolve(response);
       })
@@ -63,7 +74,7 @@
 
     bucketlist.delete = function(id){
       var defer = $q.defer();
-      $http.post("https://dreamlist.herokuapp.com/api/v1/bucketlists/"+id)
+      $http.delete($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
       .success(function(response){
         defer.resolve(response);
       })

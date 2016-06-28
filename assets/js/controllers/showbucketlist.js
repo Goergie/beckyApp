@@ -1,17 +1,16 @@
-dreamListApp.controller("ShowBucketlistController", ["$scope", "bucketlist", "$routeParams", function($scope, bucketlist, $routeParams){
+dreamListApp.controller("ShowBucketlistController", ["$scope", "bucketlist", "$routeParams", "item", function($scope, bucketlist, $routeParams, item){
     $scope.init = function(){
       $scope.show($routeParams.id);
-      $scope.today = new Date();
+      $scope.params = { name: "" };
     };
 
     $scope.show = function(){
       bucketlist.get($routeParams.id)
       .then(function(response){
         $scope.bucketlist = response.bucketlist;
-        var myEl = angular.element(document.querySelector('#pg'));
+        var myEl = angular.element(document.querySelector("#mypg"));
+        myEl.removeAttr('class');
         myEl.addClass($scope.setClass());
-
-        console.log($scope.bucketlist.items);
         //success
       }, function(err, status){
         console.log(err);
@@ -21,21 +20,53 @@ dreamListApp.controller("ShowBucketlistController", ["$scope", "bucketlist", "$r
     $scope.setClass = function(){
 
       $scope.percentage = getpercentage($scope.bucketlist.items);
-      console.log($scope.percentage)
       switch(true) {
         case ( $scope.percentage >79):
-           return "progress-bar progress-bar-success";
+           return "progress progress-success";
           break;
-        case ( $scope.percentage >49):
-           return "progress-bar progress-bar-info"
+        case ( $scope.percentage >49 && $scope.percentage < 80):
+           return "progress progress-info"
           break;
-        case ( $scope.percentage > 20):
-           return "progress-bar progress-bar-warning";
+        case ( $scope.percentage > 19 && $scope.percentage < 50):
+           return "progress progress-warning";
+          break;
+        case ( $scope.percentage > 0 && $scope.percentage < 20 ):
+           return "progress progress-danger";
           break;
         default:
-            return "progress-bar progress-bar-danger";
+            return "progress progress-danger";
       }
     }
+
+    $scope.additem = function(){
+      bucketlist.addItem($scope.bucketlist.id, $scope.params)
+      .then(function(response){
+        $scope.init();
+        //success
+      }, function(err, status){
+        console.log(err);
+      })
+    };
+
+    $scope.markItemDone = function(id){
+      item.markDone($scope.bucketlist.id, id)
+      .then(function(response){
+        $scope.init();
+        //success
+      }, function(err, status){
+        console.log(err);
+      })
+    };
+
+    $scope.deleteItem = function(id){
+      item.delete($scope.bucketlist.id, id)
+      .then(function(response){
+        $scope.init();
+        //success
+      }, function(err, status){
+        console.log(err);
+      })
+    };
 
     var getpercentage = function(items){
       if (items.length === 0){
@@ -50,10 +81,15 @@ dreamListApp.controller("ShowBucketlistController", ["$scope", "bucketlist", "$r
             done += 1;
           }
         }
-        return (done/total * 100);
+        return parseInt((done/total * 100));
       }
     };
 
     $scope.init();
+
+    $scope.get_date = function(date) {
+      var my_date = new Date(date);
+      return my_date;
+    }
 }]);
 

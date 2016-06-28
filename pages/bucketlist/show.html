@@ -1,18 +1,40 @@
 <section class="sinlge-bucket-section">
   <div class="single-bucket-top-div row">
-    <h1> <span class="fa fa-quote-right"></span><span style="padding-left: 20px;">{{bucketlist.name}}</span></h1>
+    <h1> <span class="fa fa-quote-right"></span><span style="padding-left: 20px;">{{bucketlist.name | capitalize }}</span></h1>
   </div>
   <div class="item-progress">
     <div class="progress my-progress">
-      <div id="pg"  style="width:{{percentage}}%">
+      <progress id="mypg" value="{{percentage}}" max="100">
         <span>{{percentage}}% done</span>
-      </div>
+      </progress> <span>{{percentage}}% done</span>
     </div>
   </div>
   <div class="bucket-details">
-    <p class="date"><i class="fa fa-calendar"></i><span class="bucket-date">Created: {{bucketlist.date_created }}</span></p>
-     <p class="date"><i class="fa fa-calendar"></i><span class="bucket-date">Last Updated: {{bucketlist.date_modified }}</span></p>
+    <p class="date"><i class="fa fa-calendar"></i><span class="bucket-date">Created: {{ get_date(bucketlist.date_created) | date:'medium' }}</span></p>
+     <p class="date"><i class="fa fa-calendar"></i><span class="bucket-date">Last Updated: {{ get_date(bucketlist.date_modified) | date:'medium' }}</span></p>
   </div>
-
 </section>
-
+<div class="items-container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="list-item"  ng-repeat="item in bucketlist.items | orderBy:'id' " >
+        <div>
+          <div><span class="item-title">Item {{$index + 1}} </span> <span ng-show="item.done"><i class="fa fa-check-circle" aria-hidden="true"></i></span></div>
+          <span class="list-text">{{ item.name }} </span>
+          <div>
+            <span class="item-icon item-delete" ng-click="deleteItem(item.id)"><i class="fa fa-times"></i></span>
+            <span class="item-icon item-edit" ng-click="editItem(item.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+            <span  class="item-icon item-mark" ng-show="!item.done" ng-click="markItemDone(item.id)">Mark as done</span>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h5> Add a new Item</h5>
+      <textarea class="form-control tarea" rows="3" ng-model="params.name"></textarea>
+       <button type="button" class="btn index-signup-btn" ng-click="additem()">ADD</button>
+    </div>
+  </div>
+</div>

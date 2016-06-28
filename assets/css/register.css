@@ -5,17 +5,36 @@
   border-radius: 5px;
   padding: 25px;
   margin-top: 10%;
+  text-align: center;
   width: 30%;
+}
+
+.signup-container {
+  margin-top: 10%;
+  padding: 3em;
 }
 
 .input-field {
   margin-top: 2em;
 }
 
+.plain {
+  height: 960px;
+  padding: 50px;
+  background-image: url(../images/index.jpg)
+  background-size: 100%;
+}
+
 .submit-button {
-  background-color: #621e48;
   color: white;
   font-size: 1em;
+  background-color: rgba(179,119,82,0.85);
+  border-color: transparent;
+  border-radius: 0px;
+  font-family: "Oswald",Helvetica,sans-serif;
+  line-height: 25px;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 .submit-button:hover {
@@ -28,13 +47,31 @@ select {
 
 .ng-invalid.ng-dirty {
   border-color: #FA787E;
+}
 
+.form-div {
+  background-color: white;
+  box-shadow: 0 2px 3px 2px rgba(0,0,0,.2);
+  border-radius: 4px;
+  width: 40%;
+  margin: 0 auto;
+  padding: 3em 0;
+  text-align: center;
+}
+
+.form-group {
+  padding-left: 4.5em;
 }
 
 .ng-valid.ng-dirty {
   border-color: #78FA89;
 }
 
+.signup-header {
+  margin-top: -0.3em;
+  margin-bottom: 1em;
+
+}
 
 .error-page{
   background-image: url("../images/404.jpg");
@@ -62,18 +99,6 @@ select {
   width: 85%;
 }
 
-.done{
-    color: green;
-}
-
-.pending {
-  color: red;
-
-}
-
-.items {
-  color: blue;
-}
 
 .blistrow{
   padding: 5px 10px 15px 20px;
@@ -94,28 +119,14 @@ blockquote {
   width: 80%;
 }
 
-.navbar{
-  background-color: black !important;
-
+.email-field {
+  border-radius: 0px;
+  height: 45px !important;
+  margin-bottom: 30px !important;
+  width: 80% !important;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: #fff;
+h4 {
+  height: 50px;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: #fff;
-}
-
-.navbar-default .navbar-brand {
-    color: #fff;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: #c49500;
-    background-color: transparent;
-}
-
-.navbar-default .navbar-nav>li>a:hover {
-    color: #c49500;
-    background-color: transparent;

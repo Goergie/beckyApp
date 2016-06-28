@@ -2,42 +2,57 @@
 <html ng-app="dreamListApp">
   <head>
   <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="assets/css/register.css"></link>
     <link rel="stylesheet" href="assets/css/404.css"></link>
+    <link rel="stylesheet" href="assets/css/main.css"></link>
         <link rel="stylesheet" href="assets/css/bucketlist.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
         <script type="text/javascript" src="assets/js/services/user.js"></script>
+        <script type="text/javascript" src="assets/js/services/session.js"></script>
+        <script type="text/javascript" src="assets/js/services/item.js"></script>
         <script type="text/javascript" src="assets/js/services/bucketlist.js"></script>
             <script type="text/javascript" src="assets/js/controllers/main.js"></script>
         <script type="text/javascript" src="assets/js/controllers/users.js"></script>
         <script type="text/javascript" src="assets/js/controllers/bucketlists.js"></script>
         <script type="text/javascript" src="assets/js/controllers/showbucketlist.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
        <!--  <base href="file:///Users/sname/workspace/mydreamlist/index.html#/"> -->
 
     <title>MyDreamList </title>
   </head>
 
   <body>
-  <nav class="navbar navbar-default  navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#/">My Dreamlist</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#/bucketlists">Home</a></li>
-      <li><a href="#/bucketlist/new">Create Bucket</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/login">Logout</a></li>
-      </ul>
+ <nav class="navbar navbar-fixed-top" ng-controller="mainController">
+  <div class="nav navbar-nav">
+    <span class="nav-item nav-link" ng-show="isLoggedIn()">Welcome {{ username }} </span>
+  </div>
+  <div class="nav navbar-nav pull-right">
+    <div class="dropdown click-open">
+  <div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="logout()">
+    Logout
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dLabel">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
   </div>
 </nav>
     <div>
           <div ng-view></div>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
 
   </body>
 </html>

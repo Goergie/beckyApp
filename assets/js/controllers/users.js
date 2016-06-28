@@ -1,4 +1,4 @@
-dreamListApp.controller("UserController", ["$scope", "user", "$window", "$location", function($scope, user, $window, $location){
+dreamListApp.controller("UserController", ["$scope", "user", "$location", "session", function($scope, user, $location, session){
     $scope.init = function(){
       $scope.regUser = {};
       $scope.loginUser = {};
@@ -8,7 +8,10 @@ dreamListApp.controller("UserController", ["$scope", "user", "$window", "$locati
     $scope.createUser = function(){
       user.create($scope.regUser)
       .then(function(response){
-        console.log(response);
+        var username = response.user;
+        var token = response.token;
+        session.create(username, token);
+        $location.path( "/bucketlists" );
         //success
       }), function(err, status){
         console.log(err);
@@ -18,28 +21,14 @@ dreamListApp.controller("UserController", ["$scope", "user", "$window", "$locati
     $scope.login = function(){
       user.login($scope.loginUser)
       .then(function(response){
-        $window.sessionStorage.token = response.token;
-        $window.sessionStorage.loggedIn = true;
+        var username = response.user;
+        var token = response.token;
+        session.create(username, token);
         $location.path( "/bucketlists" );
         //success
       }, function(err, status){
         $scope.error = "Invalid Email/Password";
       })
-    };
-
-    $scope.confirm = function(valid){
-        $scope.valid = valid;
-        if ($scope.regUser.password === $scope.regUser.passwordConfirm) {
-          return $scope.valid && true;
-        }
-        else {
-          return $scope.valid && false;
-        }
-    };
-
-    $scope.logout = function(){
-      $window.sessionStorage.token = "";
-      $window.sessionStorage.loggedIn= false;
     };
 
     $scope.init();

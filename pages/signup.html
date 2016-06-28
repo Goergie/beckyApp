@@ -1,32 +1,27 @@
-<div class=" container main">
-<div>
-  <h5 class="text-center"> Sign Up </h5>
+<section class="plain">
+<div class="container signup-container ">
+  <div class="form-div">
+    <h2 class="signup-header">Sign Up </h2>
+    <form name="registeration" ng-submit="registeration.$valid && createUser()" novalidate >
+      <div class="form-group">
+        <input name="name" ng-model="regUser.name"  class="form-control email-field " id="name" required placeholder="Name">
+      </div>
+
+      <div class="form-group">
+        <input type="email" ng-model="regUser.email"  class="form-control email-field" id="email" required placeholder="Email">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" ng-model="regUser.password"  class="form-control email-field" id="password" required placeholder="Password">
+      </div>
+
+       <div class="form-group">
+        <input type="submit" value="REGISTER" class="form-control btn-primary submit-button email-field">
+      </div>
+      <div> Already registered? <a href="#login">Login Here</a></div>
+    </form>
+  <div>
 </div>
-<form name="registeration" ng-submit="confirm(registeration.$valid) && createUser()" novalidate >
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input name="name" ng-model="regUser.name"  class="form-control " id="name" required>
-  </div>
+</section>
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" ng-model="regUser.email"  class="form-control" id="email" required>
-  </div>
-
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" ng-model="regUser.password"  class="form-control" id="password" required>
-  </div>
-
-  <div class="form-group">
-    <label for="passwordConfirm">Confirm Password</label>
-    <input type="password" name="passwordConfirm" ng-model="regUser.passwordConfirm"  class="form-control" id="passwordConfirm" required>
-  </div>
-
-   <div class="form-group">
-    <input type="submit" value="submit" class="form-control btn-primary submit-button">
-  </div>
-  <div> Already registered? <a href="#login">Login here</a></div>
-</form>
-</div>
 
