@@ -57,7 +57,7 @@ dreamListApp.controller("mainController", ["$scope", "session", "$location", fun
         $scope.username = session.user.name;
         return true;
       }
-  };"$location",
+  };
 
   $scope.logout = function(){
     session.destroy();
