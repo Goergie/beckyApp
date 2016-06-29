@@ -7,7 +7,7 @@
 
     item.create = function(bucketlist_id, item){
       var defer = $q.defer();
-      $http.post($rootScope.url + "bucketlists/"+bucketlist_id+"/items", item, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.post($rootScope.url + "bucketlists/"+bucketlist_id+"/items", item)
       .success(function(response){
         defer.resolve(response);
       })
@@ -20,7 +20,7 @@
 
     item.delete = function(bucketlist_id, item_id){
       var defer = $q.defer();
-       $http.delete($rootScope.url + "bucketlists/"+bucketlist_id+"/items/" + item_id, { "headers": { Authorization: 'token ' + session.user.token }})
+       $http.delete($rootScope.url + "bucketlists/"+bucketlist_id+"/items/" + item_id)
       .success(function(response){
         defer.resolve(response);
       })
@@ -35,7 +35,7 @@
       console.log("here ");
       var item = { done: true }
       var defer = $q.defer();
-      $http.put($rootScope.url + "bucketlists/"+bucketlist_id+"/items/" + item_id, item, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.put($rootScope.url + "bucketlists/"+bucketlist_id+"/items/" + item_id, item)
       .success(function(response){
         defer.resolve(response);
       })
@@ -48,7 +48,7 @@
 
     item.update = function(id){
       var defer = $q.defer();
-      $http.post($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.post($rootScope.url + "bucketlists/"+id)
       .success(function(response){
         defer.resolve(response);
       })

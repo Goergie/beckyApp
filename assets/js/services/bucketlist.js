@@ -7,7 +7,7 @@
 
     bucketlist.all = function(){
       var defer = $q.defer();
-      $http.get($rootScope.url + "bucketlists", { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.get($rootScope.url + "bucketlists")
         .success(function(response){
         defer.resolve(response);
       })
@@ -22,7 +22,7 @@
 
     bucketlist.get = function(id){
       var defer = $q.defer();
-      $http.get($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.get($rootScope.url + "bucketlists/"+id)
       .success(function(response){
         defer.resolve(response);
       })
@@ -35,7 +35,7 @@
 
     bucketlist.create = function(bucketlist){
       var defer = $q.defer();
-      $http.post($rootScope.url + "bucketlists", bucketlist, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.post($rootScope.url + "bucketlists", bucketlist)
       .success(function(response){
         defer.resolve(response);
       })
@@ -48,7 +48,7 @@
 
     bucketlist.addItem = function(bucketlist_id, item){
       var defer = $q.defer();
-      $http.post($rootScope.url + "bucketlists/"+bucketlist_id+"/items", item, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.post($rootScope.url + "bucketlists/"+bucketlist_id+"/items", item)
       .success(function(response){
         defer.resolve(response);
       })
@@ -61,7 +61,7 @@
 
     bucketlist.update = function(id){
       var defer = $q.defer();
-      $http.post($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.post($rootScope.url + "bucketlists/"+id)
       .success(function(response){
         defer.resolve(response);
       })
@@ -74,7 +74,7 @@
 
     bucketlist.delete = function(id){
       var defer = $q.defer();
-      $http.delete($rootScope.url + "bucketlists/"+id, { "headers": { Authorization: 'token ' + session.user.token }})
+      $http.delete($rootScope.url + "bucketlists/"+id)
       .success(function(response){
         defer.resolve(response);
       })

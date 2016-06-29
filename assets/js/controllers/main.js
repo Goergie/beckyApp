@@ -4,7 +4,8 @@ dreamListApp.config(function($routeProvider) {
 $routeProvider
 //   // route for the home page
   .when("/", {
-      templateUrl : "pages/index.html"
+      templateUrl : "pages/index.html",
+      controller: "mainController"
   })
 
   // route for the login
@@ -42,6 +43,11 @@ dreamListApp.run(function($rootScope) {
 })
 
 dreamListApp.controller("mainController", ["$scope", "session", "$location", function($scope, session, $location){
+  $scope.redirect = function() {
+    if(session.user.token){
+      $location.path("/bucketlists");
+    }
+  };
 
   $scope.isLoggedIn = function(){
       if(session.user.token == null || session.user.token == ""){
@@ -58,6 +64,7 @@ dreamListApp.controller("mainController", ["$scope", "session", "$location", fun
     $location.path("/");
   };
 
+  $scope.redirect();
 
 }]);
 
@@ -68,27 +75,17 @@ dreamListApp.filter("capitalize", function() {
     }
 });
 
-// dreamListApp.run(['$rootScope', '$injector',"$window", function($rootScope,$injector, $window) {
-//     $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
-//         if (!$window.sessionStorage.token) headersGetter()['Authorization'] = "token "+ "ll";
-//         if (data) {
-//             return angular.toJson(data);
-//         }
-//     };
-// }]);
+dreamListApp.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('sessionInjector');
+}]);
 
-// dreamListApp.run( function($rootScope, $location, $window) {
-//   // register listener to watch route changes
-//   $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-//     if ($window.sessionStorage.loggedIn == false ) {
-//       // no logged user, we should be going to #login
-//       if ( next.templateUrl == "pages/login.html" ||  next.templateUrl == "pages/signup.html" || next.templateUrl == "pages/index.html" ) {
-//         // already going to #login, no redirect needed
-//       } else {
-//         // not going to #login, we should redirect now
-//         $location.path( "/login" );
-//       }
-//     }
-//   });
-// })
-
+dreamListApp.run(function($rootScope, $location, session) {
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if (session.user.token === "" || session.user.token == null ) {
+        if ( next.templateUrl === "pages/login.html" || next.templateUrl === "pages/index.html" || next.templateUrl === "pages/signup.html") {
+        } else {
+          $location.path("/login");
+        }
+      }
+    });
+  });
